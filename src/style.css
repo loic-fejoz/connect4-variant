@@ -75,9 +75,19 @@ body {
     border-color: #cc0000;
 }
 
+.title-p1 {
+    color: #ff4444;
+    text-shadow: 0 0 10px rgba(255, 68, 68, 0.3);
+}
+
 .cell.p2 {
     background-color: #ffcc00;
     border-color: #cc9900;
+}
+
+.title-p2 {
+    color: #ffcc00;
+    text-shadow: 0 0 10px rgba(255, 204, 0, 0.3);
 }
 
 .controls {

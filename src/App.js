@@ -156,10 +156,12 @@ export function App() {
     }
 
     // 2. Game View (Players + Spectators)
+    const titleClass = myPlayerIdx === 0 ? 'title-p1' : (myPlayerIdx === 1 ? 'title-p2' : '');
+
     return html`
     <div class="app-container">
       <header>
-        <h1>Connect 4 Variant</h1>
+        <h1 class=${titleClass}>Connect 4 Variant</h1>
         <div class="status">
             ${isSpectator ? html`<span class="badge">Spectator Mode</span>` : ''}
             ${state.winner ?
