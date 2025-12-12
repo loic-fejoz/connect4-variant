@@ -190,6 +190,10 @@ export function App() {
     // 2. Game View (Players + Spectators)
     const titleClass = myPlayerIdx === 0 ? 'title-p1' : (myPlayerIdx === 1 ? 'title-p2' : '');
 
+    const onClearSelection = () => {
+        setLocalMoves([]);
+    };
+
     return html`
     <div class="app-container">
       <header>
@@ -214,9 +218,14 @@ export function App() {
         ${isPlayer ? html`
             <p>Your Selection: ${localMoves.map(c => c + 1).join(', ')}</p>
             ${state.roundMoves[myAddr] ? html`<p>Waiting for opponent...</p>` : ''}
-            <button class="primary" onClick=${onSubmitMoves} disabled=${localMoves.length !== 3 || !canPlay}>
-                Submit Moves
-            </button>
+            <div class="button-group">
+                <button onClick=${onClearSelection} disabled=${localMoves.length === 0 || !canPlay} style="background-color: #888; margin-right: 10px;">
+                    Clear
+                </button>
+                <button class="primary" onClick=${onSubmitMoves} disabled=${localMoves.length !== 3 || !canPlay}>
+                    Submit Moves
+                </button>
+            </div>
         ` : ''}
         
         ${state.winner ? html`<button onClick=${onReset}>Reset Game</button>` : ''}
