@@ -8,7 +8,8 @@
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
-    "simulate": "npm run build && webxdc-dev run dist"
+    "simulate": "npm run build && webxdc-dev run dist",
+    "lint": "eslint src"
   },
   "keywords": [],
   "author": "",
@@ -20,6 +21,8 @@
   "devDependencies": {
     "@preact/preset-vite": "^2.10.2",
     "@webxdc/webxdc-dev": "^0.21.0",
+    "eslint": "^8.57.0",
+    "eslint-config-preact": "^2.0.0",
     "vite": "^7.2.6"
   }
 }

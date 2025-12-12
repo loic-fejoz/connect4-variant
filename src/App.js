@@ -1,13 +1,12 @@
-import { h } from 'preact';
-import { useState, useEffect, useMemo } from 'preact/hooks';
+
+import { useState, useEffect } from 'preact/hooks';
 import { html } from 'htm/preact';
 import { Board } from './components/Board.js';
-import { createBoard, resolveTurn, checkWin, PLAYER_1, PLAYER_2 } from './game-logic.js';
+import { createBoard, resolveTurn, PLAYER_1 } from './game-logic.js';
 
 const MOVES_PER_TURN = 3;
 
 export function App() {
-    const [board, setBoard] = useState(createBoard());
     const [localMoves, setLocalMoves] = useState([]);
 
     // Reducer-like state
@@ -28,7 +27,7 @@ export function App() {
 
         const handleUpdate = (update) => {
             if (update.serial === 0) return;
-            const { payload, info } = update;
+            const { payload } = update;
             if (!payload) return;
 
             setState(prev => {
