@@ -118,6 +118,11 @@ export function App() {
 
     const onColumnClick = (col) => {
         if (!canPlay) return;
+
+        // Rule: A player is not allowed to select 3 times the same column in a turn.
+        const count = localMoves.filter(c => c === col).length;
+        if (count >= 2) return;
+
         if (localMoves.length < MOVES_PER_TURN) {
             setLocalMoves([...localMoves, col]);
         }
