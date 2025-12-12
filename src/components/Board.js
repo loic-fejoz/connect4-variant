@@ -2,7 +2,7 @@
 import { html } from 'htm/preact';
 import { ROWS, COLS, PLAYER_1, PLAYER_2 } from '../game-logic.js';
 
-export function Board({ board, onColumnClick, disabled, previewMoves = [] }) {
+export function Board({ board, onColumnClick, disabled }) {
   // Preview moves are transient selected by the user but not yet committed
   // We can overlay them.
 

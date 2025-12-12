@@ -210,7 +210,6 @@ export function App() {
          board=${state.board} 
          onColumnClick=${onColumnClick} 
          disabled=${!canPlay}
-         previewMoves=${localMoves}
       />
 
       <div class="controls">

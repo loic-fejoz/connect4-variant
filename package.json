@@ -18,11 +18,15 @@
     "htm": "^3.1.1",
     "preact": "^10.28.0"
   },
+  "overrides": {
+    "solid-js": "^1.9.4",
+    "axios": "^1.6.0",
+    "wait-on": "^7.2.0"
+  },
   "devDependencies": {
     "@preact/preset-vite": "^2.10.2",
     "@webxdc/webxdc-dev": "^0.21.0",
-    "eslint": "^8.57.0",
-    "eslint-config-preact": "^2.0.0",
+    "eslint": "^8.57.1",
     "vite": "^7.2.6"
   }
 }
