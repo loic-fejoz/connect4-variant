@@ -16,7 +16,14 @@ This is not your standard Connect 4!
     *   Move 3 (Player B)
 3.  **Winning**: The first player to connect 4 discs (horizontally, vertically, or diagonally) wins.
     *   Win conditions are checked *after every individual disc drop* during the resolution phase.
-    *   If a move cannot be made (column full), that specific move is skipped.
+4.  **Column Selection Requirement**: You cannot select the same column **strictly more than twice** in a single turn.
+5.  **Fair Turn Order**:
+    *   **First Game**: The first player to join the game plays first.
+    *   **Subsequent Games**: The loser of the previous game plays first.
+6.  **Joining**: The game requires 2 players.
+    *   First user to click "Join Game" waits in lobby.
+    *   Second user joins to start the match.
+    *   Any further users are **Spectators**.
 
 ## 🛠️ Technology Stack
 
@@ -45,6 +52,11 @@ This is not your standard Connect 4!
 3.  Build for production:
     ```bash
     npm run build
+    ```
+
+4.  Generate .xdc file:
+    ```bash
+    make connect4-game.xdc
     ```
 
 ### WebXDC Emulation
