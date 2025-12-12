@@ -77,11 +77,19 @@ export function App() {
 
                 // RESET Logic
                 if (payload.type === 'reset') {
+                    // Check if Player 1 (who started first) won.
+                    // If so, swap players so the loser (Player 2) starts first next game.
+                    if (next.winner && next.players.length === 2 && next.winner.addr === next.players[0].addr) {
+                        const p0 = next.players[0];
+                        next.players[0] = next.players[1];
+                        next.players[1] = p0;
+                    }
+
                     next.board = createBoard();
                     next.winner = null;
                     next.roundMoves = {};
                     next.moveLog = [];
-                    // Players persist on reset
+                    // Players persist on reset (potentially swapped)
                 }
 
                 return next;
