@@ -61,3 +61,14 @@ This is not your standard Connect 4!
 
 ### WebXDC Emulation
 This project includes a `webxdc.js` mock for local browser development. It simulates sending and receiving updates so you can test the game logic without needing the full messenger environment.
+
+## 🤖 AI Attribution
+This game was entirely designed and coded with the assistance of **Antigravity**, an agentic AI coding assistant developed by **Google Deepmind**.
+
+*   **Model**: Antigravity (Advanced Agentic Coding)
+*   **Developer**: Google Deepmind
+*   **Date**: December 2025
+
+> [!NOTE]
+> Most of the prompts used to create this game are available in the project's `git log`.
+
