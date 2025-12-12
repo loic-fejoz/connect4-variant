@@ -118,7 +118,26 @@ export function App() {
     const onSubmitMoves = () => {
         if (localMoves.length !== MOVES_PER_TURN) return;
 
-        const desc = `${state.players[myPlayerIdx].name} selected moves`;
+        let desc = `${state.players[myPlayerIdx].name} selected moves`;
+
+        // Check if this move completes the round and creates a winner
+        const opponentIdx = myPlayerIdx === 0 ? 1 : 0;
+        const opponentAddr = state.players[opponentIdx]?.addr;
+
+        if (opponentAddr && state.roundMoves[opponentAddr]) {
+            // Opponent has moved. We are completing the round.
+            // Prepare args for resolveTurn (pure check)
+            const p1Moves = myPlayerIdx === 0 ? localMoves : state.roundMoves[state.players[0].addr];
+            const p2Moves = myPlayerIdx === 1 ? localMoves : state.roundMoves[state.players[1].addr];
+
+            const res = resolveTurn(state.board, p1Moves, p2Moves);
+
+            if (res.winner) {
+                const winnerName = res.winner === PLAYER_1 ? state.players[0].name : state.players[1].name;
+                desc = `🏆 ${winnerName} won the game!`;
+            }
+        }
+
         window.webxdc.sendUpdate({
             payload: { type: 'moves', moves: localMoves, addr: myAddr },
             info: desc
@@ -165,7 +184,7 @@ export function App() {
         <div class="status">
             ${isSpectator ? html`<span class="badge">Spectator Mode</span>` : ''}
             ${state.winner ?
-            html`<h2>Winner: ${state.winner.name}!</h2>` :
+            html`<h2 class="winner-banner">Winner: ${state.winner.name}!</h2>` :
             html`<p>${state.players[0].name} <span class="vs">vs</span> ${state.players[1].name}</p>`
         }
         </div>
